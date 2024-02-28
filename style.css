@@ -20,6 +20,10 @@ body {
   border: 1px solid #ddd;
 }
 
+.feed-column .card p {
+  color: #6c757d; /* Gray color for summary text */
+}
+
 a {
   color: #007bff;
   text-decoration: none;

@@ -25,9 +25,12 @@ function fetchAndParseFeed(feedUrl, className) {
         const title = item.querySelector("title").textContent;
         const linkElement = item.querySelector("link");
         const link = linkElement ? linkElement.getAttribute("href") : null;
+        const summary = item.querySelector("summary") ? item.querySelector("summary").textContent : (item.querySelector("content") ? item.querySelector("content").textContent : "No summary available");
+
+        const blurb = summary.length > 200 ? `${summary.substring(0, 200)}...` : summary; // Truncate to 200 characters
 
         if(link) {
-          column.innerHTML += `<div class="card"><a href="${link}" target="_blank">${title}</a></div>`;
+          column.innerHTML += `<div class="card"><a href="${link}" target="_blank">${title}</a><p>${blurb}</p></div>`;
         }
       });
     })
