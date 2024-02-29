@@ -6,13 +6,25 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="page-header">
+    <h1>RSS</h1>
+  </header>
+
   <div id="feed-content">
-    <div class="feed-column hacker-news">Hacker News Feed</div>
-    <div class="feed-column dhh-feed">DHH Feed</div>
+    <div class="feed-column hacker-news">
+      <!-- Hacker News Feed -->
+    </div>
+    <div class="feed-column dhh-feed">
+      <!-- DHH Feed -->
+    </div>
   </div>
+
   <div class="edit-button-container">
-    <a href="https://github.com/jackrieger/rss" target="_blank" class="edit-button">Edit on GitHub</a>
+    <button class="edit-button" onclick="location.href='https://github.com/jackrieger/rss'" type="button">
+      Edit on GitHub
+    </button>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
