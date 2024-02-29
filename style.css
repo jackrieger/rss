@@ -1,31 +1,79 @@
+:root {
+  --background-container: #f8f9fa; /* Light gray background */
+  --background-white: #ffffff;
+  --border-gray: #dddddd;
+  --button-bg: #007bff;
+  --button-bg-hover: #0056b3; /* Darkened version of --button-bg for hover state */
+  --button-text: #ffffff;
+  --gap: 1.5rem;
+  --link-blue: #007bff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --text-black: #000000;
+}
+
 body {
   font-family: sans-serif;
-  padding: 2rem;
+  margin: 0;
+  padding: var(--gap);
+  transition: background-color 0.3s;
 }
 
 #feed-content {
   display: flex;
+  gap: var(--gap);
   justify-content: space-between;
 }
 
 .feed-column {
-  width: 48%;
-}
+  width: calc(50% - (var(--gap) / 2));
 
-.feed-column .card {
-  background-color: #fff;
-  margin: 10px 0;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  border: 1px solid #ddd;
-}
+  .card {
+    background-color: var(--background-white);
+    border: 1px solid var(--border-gray);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    margin-bottom: var(--gap);
+    overflow: hidden;
+    transition: box-shadow 0.3s;
 
-.feed-column .card p {
-  color: #6c757d; /* Gray color for summary text */
+    a {
+      color: var(--text-black);
+      display: block;
+      padding: 20px;
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:hover {
+        box-shadow: 0 2px 4px var(--link-blue);
+      }
+    }
+  }
 }
 
 a {
-  color: #007bff;
+  color: var(--link-blue);
   text-decoration: none;
+}
+
+.edit-button-container {
+  background-color: var(--background-container);
+  bottom: 0;
+  left: 0;
+  padding: var(--gap);
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+.edit-button {
+  background-color: var(--button-bg);
+  border-radius: 5px;
+  color: var(--button-text);
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--button-bg-hover);
+  }
 }
