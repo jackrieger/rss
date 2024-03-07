@@ -2,11 +2,13 @@
   --background-white: #ffffff;
   --border-color: #dddddd;
   --button-text-color: #ffffff;
+  --footer-background: #f8f9fa; /* Light gray background for the footer */
   --gap: 1.5rem;
   --link-color: #007bff;
   --shadow-color: rgba(0, 0, 0, 0.1);
   --shadow-hover-color: #007bff;
   --text-black: #000000;
+  --text-size: 0.9em; /* Smaller text size */
 }
 
 body {
@@ -23,7 +25,7 @@ body {
 
 .feed-column {
   border-radius: 10px;
-  width: calc(50% - var(--gap));
+  width: calc(33.333% - var(--gap)); /* Three-column layout */
 }
 
 .card {
@@ -37,9 +39,11 @@ body {
 }
 
 .card-link {
+  color: var(--text-color);
   display: block;
   padding: 20px;
   text-decoration: none;
+  font-size: var(--text-size); /* Apply smaller text size */
 }
 
 .card:hover {
@@ -48,19 +52,21 @@ body {
 
 .card-title {
   color: var(--link-color);
-  display: block; /* Ensures the title takes up the full width */
 }
 
 .card-summary {
   color: var(--text-black);
+  display: none; /* Initially hide the summary */
 }
 
-.edit-button-container {
-  bottom: 0;
-  left: 0;
-  position: fixed;
+.dhh-feed .card-summary {
+  display: block; /* Show summary for DHH feed cards */
+}
+
+.site-footer {
+  background-color: var(--footer-background);
+  padding: var(--gap);
   text-align: center;
-  width: 100%;
 }
 
 .edit-button {
@@ -76,7 +82,7 @@ body {
   background-color: darken(var(--link-color), 10%);
 }
 
-/* Centered layout for the RSS title */
-.page-header {
+.page-title {
   text-align: center;
+  font-size: 2em;
 }
