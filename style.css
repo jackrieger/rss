@@ -8,7 +8,7 @@
   --shadow-color: rgba(0, 0, 0, 0.1);
   --shadow-hover-color: #007bff;
   --text-black: #000000;
-  --text-size: 0.9em; /* Smaller text size */
+  --text-size: 0.9em; /* Unified text size */
 }
 
 body {
@@ -25,64 +25,75 @@ body {
 
 .feed-column {
   border-radius: 10px;
-  width: calc(33.333% - var(--gap)); /* Three-column layout */
+  width: calc(33.333% - var(--gap)); /* Adjusted for three-column layout */
+
+  .feed-header {
+    font-size: var(--text-size); /* Headers use the same size as card text */
+    margin: 0; /* Align top with the page's padding */
+
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+  }
+
+  .card {
+    background-color: var(--background-white);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    margin-bottom: var(--gap);
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+
+    .card-link {
+      color: var(--text-black);
+      display: block;
+      padding: 20px;
+      text-decoration: none;
+      font-size: var(--text-size);
+
+      &:hover {
+        box-shadow: 0 2px 4px var(--shadow-hover-color);
+      }
+    }
+
+    .card-title {
+      color: var(--link-color);
+    }
+
+    .card-summary {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 }
 
-.card {
-  background-color: var(--background-white);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  box-shadow: 0 2px 4px var(--shadow-color);
-  margin-bottom: var(--gap);
-  overflow: hidden;
-  transition: box-shadow 0.3s;
-}
-
-.card-link {
-  color: var(--text-color);
-  display: block;
-  padding: 20px;
-  text-decoration: none;
-  font-size: var(--text-size); /* Apply smaller text size */
-}
-
-.card:hover {
-  box-shadow: 0 2px 4px var(--shadow-hover-color);
-}
-
-.card-title {
-  color: var(--link-color);
-}
-
-.card-summary {
-  color: var(--text-black);
-  display: none; /* Initially hide the summary */
-}
-
-.dhh-feed .card-summary {
-  display: block; /* Show summary for DHH feed cards */
+.page-title {
+  font-size: var(--text-size);
+  margin: 0;
+  padding-left: var(--gap); /* Align with the body's padding */
+  text-align: left;
 }
 
 .site-footer {
   background-color: var(--footer-background);
   padding: var(--gap);
   text-align: center;
-}
 
-.edit-button {
-  background-color: var(--link-color);
-  border-radius: 5px;
-  color: var(--button-text-color);
-  padding: 10px 20px;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
+  .edit-button {
+    background-color: var(--link-color);
+    border-radius: 5px;
+    color: var(--button-text-color);
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
 
-.edit-button:hover {
-  background-color: darken(var(--link-color), 10%);
-}
-
-.page-title {
-  text-align: center;
-  font-size: 2em;
+    &:hover {
+      background-color: darken(var(--link-color), 10%);
+    }
+  }
 }
