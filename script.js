@@ -53,4 +53,4 @@ function fetchAndParseFeed(feedUrl, className, maxItems, sourceLink) {
       column.innerHTML = htmlContent;
     })
     .catch(error => console.error("Error fetching or parsing feed:", error));
-});
+};
