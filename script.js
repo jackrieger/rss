@@ -34,12 +34,32 @@ function fetchFeed(feed) {
 }
 
 function displayFeed(data, feed) {
-  const items = Array.from(data.querySelectorAll("item")).slice(0, feed.cards_per);
+  let items;
+  // Check if the feed is Atom or RSS by looking for the feed tag (Atom) vs. rss tag (RSS)
+  if (data.querySelector("feed")) {
+    items = Array.from(data.querySelectorAll("entry")).slice(0, feed.cards_per);
+  } else {
+    items = Array.from(data.querySelectorAll("item")).slice(0, feed.cards_per);
+  }
+
   let html = `<h2><a href="${feed.link}" target="_blank">${feed.id.replace(/-/g, ' ').toUpperCase()}</a></h2>`;
 
   items.forEach(item => {
-    const title = item.querySelector("title") ? item.querySelector("title").textContent : "No title";
-    const link = item.querySelector("link") ? item.querySelector("link").textContent : "#";
+    let title, link;
+    if (item.querySelector("title")) {
+      title = item.querySelector("title").textContent;
+    } else {
+      title = "No title";
+    }
+
+    // Atom feeds use <link href="URL"> while RSS uses <link>URL</link>
+    if (item.querySelector("link[href]")) {
+      link = item.querySelector("link[href]").getAttribute("href");
+    } else if (item.querySelector("link")) {
+      link = item.querySelector("link").textContent;
+    } else {
+      link = "#";
+    }
 
     html += `
       <div class="card">
@@ -50,3 +70,4 @@ function displayFeed(data, feed) {
 
   document.querySelector(`#${feed.id}`).innerHTML = html;
 }
+
