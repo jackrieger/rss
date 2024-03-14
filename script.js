@@ -24,7 +24,9 @@ feeds.forEach(feed => {
 });
 
 function fetchFeed(feed) {
-  fetch(`https://your-proxy/${feed.feed}`)
+  const proxyUrl = "https://corsproxy.io/?";
+  const feedUrl = encodeURIComponent(feed.feed);
+  fetch(`${proxyUrl}${feedUrl}`)
     .then(response => response.text())
     .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
     .then(data => displayFeed(data, feed))
@@ -36,8 +38,8 @@ function displayFeed(data, feed) {
   let html = `<h2><a href="${feed.link}" target="_blank">${feed.id.replace(/-/g, ' ').toUpperCase()}</a></h2>`;
 
   items.forEach(item => {
-    const title = item.querySelector("title").textContent;
-    const link = item.querySelector("link").textContent;
+    const title = item.querySelector("title") ? item.querySelector("title").textContent : "No title";
+    const link = item.querySelector("link") ? item.querySelector("link").textContent : "#";
 
     html += `
       <div class="card">
