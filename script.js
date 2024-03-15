@@ -62,12 +62,9 @@ function displayFeed(data, feed) {
     }
 
     html += `
-      <div class="card">
-        <a href="${link}" target="_blank">${title}</a>
-      </div>
+      <a href="${link}" class="card" target="_blank">${title}</a>
     `;
   });
 
   document.querySelector(`#${feed.id}`).innerHTML = html;
 }
-
