@@ -27,16 +27,13 @@ header {
   background: white;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: block;
   margin: 0 0 1rem 0;
   padding: 1rem;
   transition: box-shadow 0.3s;
 
-  a {
-    color: blue;
-    text-decoration: none;
-  }
-
   &:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 255, 0.6);
+    color: blue;
   }
 }
