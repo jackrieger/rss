@@ -1,21 +1,24 @@
 const feeds = [
   {
     id: "hacker-news",
+    display_name: "Hacker News",
     link: "https://news.ycombinator.com/",
     feed: "https://hnrss.org/newest",
-    cards_per: 10
+    cards_per: 7
   },
   {
     id: "dhh",
+    display_name: "DHH",
     link: "https://world.hey.com/dhh",
     feed: "https://world.hey.com/dhh/feed.atom",
-    cards_per: 10
+    cards_per: 7
   },
   {
     id: "tim-ferriss",
+    display_name: "Tim Ferriss",
     link: "https://tim.blog",
     feed: "https://tim.blog/feed/",
-    cards_per: 10
+    cards_per: 5
   }
 ];
 
@@ -42,7 +45,13 @@ function displayFeed(data, feed) {
     items = Array.from(data.querySelectorAll("item")).slice(0, feed.cards_per);
   }
 
-  let html = `<h2><a href="${feed.link}" target="_blank">${feed.id.replace(/-/g, ' ').toUpperCase()}</a></h2>`;
+  let html = `
+    <h2>
+      <a href="${feed.link}" target="_blank">
+        ${feed.display_name}
+      </a>
+    </h2>
+  `;
 
   items.forEach(item => {
     let title, link;
@@ -62,7 +71,9 @@ function displayFeed(data, feed) {
     }
 
     html += `
-      <a href="${link}" class="card" target="_blank">${title}</a>
+      <a href="${link}" class="card" target="_blank">
+        ${title}
+      </a>
     `;
   });
 
