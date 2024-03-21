@@ -1,17 +1,17 @@
 const feeds = [
   {
-    id: "hacker-news",
-    display_name: "Hacker News",
-    link: "https://news.ycombinator.com/",
-    feed: "https://hnrss.org/newest",
-    cards_per: 7
-  },
-  {
     id: "dhh",
     display_name: "DHH",
     link: "https://world.hey.com/dhh",
     feed: "https://world.hey.com/dhh/feed.atom",
-    cards_per: 7
+    cards_per: 10
+  },
+  {
+    id: "hacker-news",
+    display_name: "Hacker News",
+    link: "https://news.ycombinator.com/",
+    feed: "https://hnrss.org/newest",
+    cards_per: 10
   },
   {
     id: "tim-ferriss",
