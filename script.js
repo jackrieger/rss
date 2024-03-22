@@ -28,7 +28,8 @@ feeds.forEach(feed => {
 
 function fetchFeed(feed) {
   const proxyUrl = "https://corsproxy.io/?";
-  const feedUrl = encodeURIComponent(feed.feed);
+  const cacheBustParam = `cacheBust=${new Date().getTime()}`;
+  const feedUrl = encodeURIComponent(`${feed.feed}?${cacheBustParam}`);
   fetch(`${proxyUrl}${feedUrl}`)
     .then(response => response.text())
     .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
